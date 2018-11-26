@@ -1,0 +1,44 @@
+---
+- hosts: terraform@ansible-client-2
+  tasks:
+  - name: Install python-pip
+    yum:
+      name: python-pip
+      state: latest
+    become: true
+  - name: Install Docker
+    pip:
+      name: docker
+      state: latest
+    become: true
+  - name: Install Python
+    pip:
+      name: python
+      state: latest
+    become: true
+  - name: Start Docker Service
+    service:
+      scope: system
+      name: docker
+      enabled: yes
+    become: true
+  - name: Make Docker Group
+    group:
+      name: docker
+      state: present
+    become: true
+  - name: Add User to Docker Group
+    user:
+      name: terraform
+      groups: docker
+      append: yes
+    become: true
+  - name: Pulling Jenkins Docker Image
+    docker_container:
+      name: jenkins
+      image: mustakim/jenkins
+      state: started
+      ports: 
+      - "8080:8080"
+    become: true
+...
