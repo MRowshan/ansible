@@ -1,0 +1,31 @@
+---
+- hosts: terraform@ansible-client-3
+  tasks:
+  when:
+    ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+  - name: Install java and wget for Nexus
+    yum:
+      name: 
+      - "java"
+      - "wget"
+      state: latest
+    become: true
+  - name: Clone Nexus Repository
+    git:
+      dest: "~/nexus-install"
+      repo: "https://github.com/MRowshan/nexus-install"
+      clone: yes
+  - name: Run Nexus Script
+    shell: ./nexus-install/nexus-script
+  - name: Edit nexus.rc file
+    lineinfile:
+      path: /opt/nexus/bin/nexus.rc
+      line: 'run_as_user="nexus"'
+    become: true
+  - name: Start Nexus Service
+    service:
+      scope: system
+      name: nexus
+      enabled: yes
+    become: true
+...
