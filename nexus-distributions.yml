@@ -1,0 +1,35 @@
+---
+- hosts: terraform@ansible-client-3
+  tasks:
+  - name: Install java and wget for Nexus on CentOS
+    when: ansible_distribution == "CentOS"
+    yum:
+      name:
+      - "java"
+      - "wget"
+      state: latest
+    become: true
+  - name: Install java and wget for Nexus on Debian
+    when: ansible_distribution == "Debian"
+    yum:
+      name:
+      - "java"
+      - "wget"
+      state: latest
+    become: true
+  - name: Install java and wget for Nexus on Ubuntu
+    when: ansible_distribution == "Ubuntu"
+    yum:
+      name:
+      - "java"
+      - "wget"
+      state: latest
+    become: true
+  - name: Clone Nexus Repository
+    git:
+      dest: "~/nexus-install"
+      repo: "https://github.com/MRowshan/nexus-install"
+      clone: yes
+  - name: Run Nexus Script
+    shell: ./nexus-install/nexus-script
+...
