@@ -1,5 +1,5 @@
 ---
-- hosts: terraform@ansible-client-3
+- hosts: ansible-ubuntu
   tasks:
   - name: Install java and wget for Nexus on CentOS
     when: ansible_distribution == "CentOS"
@@ -14,7 +14,7 @@
     apt:
       update_cache: yes
       name:
-      - "java"
+      - "default-jdk"
       - "wget"
       state: latest
     become: true

@@ -17,6 +17,16 @@ Task's required to complete this job are listed in the yml file
 ## git.yml
 Install's the latest version of git on ansible-client-1  
 
-## nexus.yml & nexus-distributions.yml
+## nexus.yml
 Install's nexus on ansible-client-3 using a git repository to run a script on the node  
+
+## nexus-distributions.yml
 nexus-distributions.yml adds an additional check for the distribution being used  
+In this case, Ubuntu is being used. Ubuntu comes with python3 default, and ansible needs to be pointed to the binary.   
+To do this, edit the `/etc/ansible/hosts` file with the following:  
+```
+[ubuntu-hosts]
+user@vm-name/ip-address
+[ubuntu_hosts:vars]
+ansible_python_interpreter = /usr/bin/python3
+```
