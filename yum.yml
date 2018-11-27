@@ -7,15 +7,6 @@
       - "wget"
       state: latest
     become: true
-  - name: Install java and wget for Nexus on Ubuntu
-    when: ansible_distribution == "Ubuntu"
-    apt:
-      update_cache: yes
-      name:
-      - "default-jdk"
-      - "wget"
-      state: latest
-    become: true
   - name: Clone Nexus Repository
     git:
       dest: "~/nexus-install"

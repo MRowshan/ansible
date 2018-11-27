@@ -1,12 +1,4 @@
 ---
-  - name: Install java and wget for Nexus on CentOS
-    when: ansible_distribution == "CentOS"
-    yum:
-      name:
-      - "java"
-      - "wget"
-      state: latest
-    become: true
   - name: Install java and wget for Nexus on Ubuntu
     when: ansible_distribution == "Ubuntu"
     apt:

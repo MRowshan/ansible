@@ -30,3 +30,5 @@ user@vm-name/ip-address
 [ubuntu_hosts:vars]
 ansible_python_interpreter = /usr/bin/python3
 ```
+### apt.yml & yum.yml
+import_tasks uses the relevant yml file based on the OS used on the client machine
