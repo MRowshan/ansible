@@ -3,9 +3,9 @@ Ansible is run using
 `ansible-playbook [filename].yml`  
   
 Each playbook can be run on multiple or all hosts by putting them into a group  
-Client nodes are added to a group in the `/etc/ansible/hosts` file
-An example of what is added to the `/etc/ansible/hosts` file  
-`user@ip-address` or `user@vm-name`  
+Client nodes are added to a group in the `/etc/ansible/hosts` file  
+
+An example of what is added to the `/etc/ansible/hosts` file: `user@ip-address` or `user@vm-name`  
 eg. `terraform@ansible-client-1` 
 
 Groups can be added in the `/etc/ansible/hosts` file using  
