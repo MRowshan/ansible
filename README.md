@@ -8,8 +8,7 @@ Client nodes are added to a group in the `/etc/ansible/hosts` file
 An example of what is added to the `/etc/ansible/hosts` file: `user@ip-address` or `user@vm-name`  
 eg. `terraform@ansible-client-1` 
 
-Groups can be added in the `/etc/ansible/hosts` file using  
-`[group-name]`
+Groups can be added in the `/etc/ansible/hosts` file using: `[group-name]`
 
 ## docker.yml
 Install's Jenkins through Docker on ansible-client-2  
