@@ -9,17 +9,10 @@
       - "wget"
       state: latest
     become: true
-  - name: Install java and wget for Nexus on Debian
-    when: ansible_distribution == "Debian"
-    yum:
-      name:
-      - "java"
-      - "wget"
-      state: latest
-    become: true
   - name: Install java and wget for Nexus on Ubuntu
     when: ansible_distribution == "Ubuntu"
-    yum:
+    apt:
+      update_cache: yes
       name:
       - "java"
       - "wget"
