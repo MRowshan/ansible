@@ -1,0 +1,30 @@
+Python Server: -
+ Users:
+o Create new user called python with a custom password.
+o This user&#39;s password should be saved in a vars file on the control machine and
+referenced by the playbook.
+
+ Git:
+o Latest version should be installed on client machine.
+o Clone/pull python server repo.
+o Configure git user.
+  Server:
+o Installed in ~/python_server.
+o Server should be running.
+o Service should be bounced if the code has changed.
+ Playbooks:
+o Idempotent.
+o Platform-independent.
+o Should be 1 playbook per section (so 1 for user, 1 for git, etc) and these should
+be referenced from a main.yml.
+
+ Stretch goals:
+o Automate playbook to run at midnight.
+o Encrypt passwords using Ansible Vault.
+o Convert playbooks to roles.
+o Use web hooks to automate the playbook to run whenever the repo is updated.
+
+
+
+Notes:
+Switched python server for go server
