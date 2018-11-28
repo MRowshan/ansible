@@ -1,0 +1,22 @@
+---
+- hosts: terraform@ansible-client-4
+  tasks:
+  - name: Install git
+    yum:
+      name: git
+      state: latest
+    become: true
+  - name: Clone Repository
+    git:
+      dest: "~/go-http-server"
+      repo: "https://github.com/mrowshan/go-http-server"
+      clone: yes
+  - name: Configure git user
+    git_config:
+      name: "{{ item.name }}"
+      value: "{{item.value  }}"
+    with_items:
+    - { name: "user.name", value: "mustakimrowshan" }
+    - { name: "user.email", value: "mustakimrowshan@gmail.com" }
+    become: true
+...

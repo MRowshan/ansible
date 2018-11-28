@@ -1,0 +1,12 @@
+---
+- hosts: terraform@ansible-client-4
+  tasks:
+  - name: Load password variable from file
+    include_vars:
+      file: password.var
+  - name: Create new user
+    user:
+      name: python
+      password: "{{ pswd }}"
+    become: true
+...
